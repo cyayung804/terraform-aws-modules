@@ -1,0 +1,37 @@
+---
+name: Scheduled file updates
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'
+
+env:
+  git_user_email: 'cyayung804@gmail.com'
+  git_user_name: cyayung804
+
+permissions:
+  contents: write
+
+jobs:
+  run-and-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Run bash script
+        run: |
+          make install
+          make update
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email ${{ env.git_user_email }}
+          git config --local user.name ${{ env.git_user_name }}
+          git add -A
+          git commit -m "Scheduled file updates: Run update.sh" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
