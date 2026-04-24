@@ -1,10 +1,10 @@
-# Makefile for terraform-google-modules
+# Makefile for terraform-aws-modules
 
 .PHONY: help install update
 
 
 help:
-	@echo "Makefile for terraform-google-modules"
+	@echo "Makefile for terraform-aws-modules"
 	@echo ""
 	@echo "Usage:"
 	@echo "  make install          - Install dependencies"
