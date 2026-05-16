@@ -1,8 +1,5 @@
 Terraform AWS modules
 
-Daily updates with version releases from the official website:
-https://registry.terraform.io/namespaces/terraform-aws-modules
+Fetches all modules from the terraform-aws-modules Terraform registry namespace.
 
-This repository fetches all modules under terraform-aws-modules namespace, organizing them by name, version, and submodule(s) within the `generated` folder.
-
-Automatically generates `tf` files based on the upstream source.
+A GitHub Actions workflow runs daily to get the latest module versions and generate .tf files from inputs.json and outputs.json. Output is written to the generated/ folder.
